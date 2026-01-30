@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>TD-Cloud 最终成品 Logo</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .logo-display {
+            padding: 80px 40px;
+            text-align: center;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .white-bg {
+            background-color: #ffffff;
+            border: 1px solid #eef0f2;
+        }
+        .black-bg {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .label {
+            margin-top: 30px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #bbb;
+            text-transform: uppercase;
+        }
+
+        /* 最终成品核心样式 */
+        .logo-fusion {
+            display: flex;
+            align-items: center;
+            font-size: 52px;
+            font-weight: 900; 
+            letter-spacing: -1px; 
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        /* TD 色块：包含微调后的 T-D 紧凑间距 */
+        .logo-fusion .badge {
+            background-color: #00c1ff;
+            color: #000;
+            padding: 6px 14px;
+            margin-right: 12px;
+            border-radius: 4px; 
+            font-size: 0.88em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            /* 你要求的：离近一点点 (0.06em) */
+            letter-spacing: 0.06em; 
+            padding-right: calc(14px - 0.06em); 
+        }
+
+        /* 连字符样式 */
+        .logo-fusion .hyphen {
+            margin: 0 8px;
+            font-weight: 700;
+            color: #00c1ff;
+        }
+
+        /* 点号元素 */
+        .logo-fusion .dot {
+            color: #00c1ff;
+            margin-left: 2px;
+        }
+
+        /* --- 模式切换 --- */
+
+        /* 纯白底黑字方案 */
+        .monochrome-white .badge {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .monochrome-white .hyphen,
+        .monochrome-white .dot {
+            color: #000000;
+        }
+
+        /* 深色模式预览 */
+        .black-bg .badge {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .black-bg .hyphen,
+        .black-bg .dot {
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 style="font-weight: 200; font-size: 16px; letter-spacing: 6px; margin-bottom: 50px; color: #888;">TD-CLOUD FINAL IDENTITY</h1>
+
+    <div class="container">
+        
+        <!-- 最终成品：白底黑字 (极致稳重) -->
+        <div class="logo-display white-bg monochrome-white">
+            <div class="logo-fusion">
+                <span class="badge">TD</span><span class="hyphen">-</span>CLOUD<span class="dot">.</span>
+            </div>
+            <div class="label">成品展示 A：纯白底黑字 (Monochrome)</div>
+        </div>
+
+        <!-- 最终成品：科技蓝方案 -->
+        <div class="logo-display white-bg">
+            <div class="logo-fusion">
+                <span class="badge">TD</span><span class="hyphen">-</span>CLOUD<span class="dot">.</span>
+            </div>
+            <div class="label">成品展示 B：品牌彩色 (Tech Blue)</div>
+        </div>
+
+        <!-- 最终成品：深色背景 -->
+        <div class="logo-display black-bg">
+            <div class="logo-fusion">
+                <span class="badge">TD</span><span class="hyphen">-</span>CLOUD<span class="dot">.</span>
+            </div>
+            <div class="label">成品展示 C：深色模式 (Dark Mode)</div>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 50px; color: #aaa; font-size: 12px; max-width: 500px; text-align: center; line-height: 1.8;">
+        这是为你找回的 TD-Cloud 最终修改稿。字母粗细已经过标准化处理，间距也按你的要求进行了收紧。
+    </div>
+
+</body>
+</html>
