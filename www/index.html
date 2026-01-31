@@ -5,23 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TD-Clound</title>
     <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        overflow: hidden;
+      }
       body {
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
           Arial, sans-serif;
         background-color: #f8f9fa;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         height: 100vh;
         margin: 0;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE 10+ */
+      }
+      body::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+
+      .logo-fusion,
+      .introduce {
+        height: 100vh;
+        width: 100%;
+        scroll-snap-align: start;
       }
 
       /* 核心 Logo 样式 */
       .logo-fusion {
         display: flex;
         align-items: center;
-        font-size: 52px;
+        justify-content: center;
+        font-size: 72px;
         font-weight: 900;
         letter-spacing: -1px;
         text-transform: uppercase;
@@ -55,20 +73,147 @@
         color: #00c1ff;
         margin-left: 2px;
       }
+
+      .introduce {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 60px;
+      }
+      .intro-row {
+        display: flex;
+        width: 100%;
+        margin: 20px 0;
+      }
+      .intro-row.right {
+        justify-content: flex-end;
+        padding: 0 40px;
+        text-align: right;
+      }
+      .intro-row.left {
+        justify-content: flex-start;
+      }
+      /* -- 顶部导航栏 -- */
+      .main-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: saturate(180%) blur(10px);
+        -webkit-backdrop-filter: saturate(180%) blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transform: translateY(-100%); /* 默认隐藏，向上移出屏幕 */
+        transition: transform 0.3s ease-in-out; /* 添加平滑过渡动画 */
+      }
+
+      /* 当添加此 active 类时显示导航栏 */
+      .main-header.visible {
+        transform: translateY(0);
+      }
+
+      /* 导航栏中的小 Logo */
+      .logo-fusion-small {
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: -0.5px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        color: #333;
+      }
+      .logo-fusion-small .badge {
+        background-color: #00c1ff;
+        color: #000;
+        padding: 4px 8px;
+        margin-right: 6px;
+        border-radius: 4px;
+        font-size: 0.8em;
+      }
+      .logo-fusion-small .hyphen {
+        margin: 0 4px;
+        color: #00c1ff;
+      }
+      .logo-fusion-small .dot {
+        color: #00c1ff;
+        margin-left: 1px;
+      }
+
+      /* 导航链接 */
+      .main-nav a {
+        margin-left: 25px;
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        font-size: 16px;
+        transition: color 0.2s ease-in-out;
+      }
+      .main-nav a:hover {
+        color: #009acb;
+      }
     </style>
   </head>
   <body>
-    <header>
-      <div class="logo-fusion">
+    <header class="main-header">
+      <div class="logo-fusion-small">
         <span class="badge">TD</span><span class="hyphen">-</span>CLOUD<span
           class="dot"
           >.</span
         >
       </div>
+      <nav class="main-nav">
+        <a href="/www/html/logIn.html">登录</a>
+        <a href="/www/html/logUp.html">注册</a>
+      </nav>
     </header>
-    <div>介绍</div>
-    <div>
-      <a href="/www/html/start.html">现在开始</a>
+    <div class="logo-fusion">
+      <span class="badge">TD</span><span class="hyphen">-</span>CLOUD<span
+        class="dot"
+        >.</span
+      >
     </div>
+    <div class="introduce">
+      <h1>糖豆方块屋服务器</h1>
+      <h2>TDFKW SERVE</h2>
+      <p>介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍</p>
+      <div class="intro-row left">
+        <div style="width: 300px; height: 200px; background: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #adb5bd;">
+          图片/内容占位
+        </div>
+      </div>
+      <div class="intro-row right">
+        <div>
+          <h1>糖豆方块屋服务器</h1>
+          <h2>TDFKW SERVE</h2>
+          <p>介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const header = document.querySelector(".main-header");
+      const firstSection = document.querySelector(".logo-fusion");
+
+      // 创建观察者，监听第一屏的可见性
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // 如果第一屏可见（isIntersecting 为 true），则隐藏导航栏
+            // 否则（滑到了第二屏），显示导航栏
+            entry.isIntersecting
+              ? header.classList.remove("visible")
+              : header.classList.add("visible");
+          });
+        },
+        { threshold: 0.5 }, // 阈值 0.5 表示当第一屏有 50% 可见时触发
+      );
+
+      observer.observe(firstSection);
+    </script>
   </body>
 </html>
